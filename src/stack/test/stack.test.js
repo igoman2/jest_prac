@@ -5,18 +5,29 @@ describe("Stack Test", () => {
   beforeEach(() => {
     stack = new Stack();
   });
-  it("is created with empty", () => {
-    expect(typeof stack.value).toBe(Array);
-    expect(stack.size()).toBe(0);
+  describe("Push", () => {
+    it("is created with empty", () => {
+      expect(stack.size()).toBe(0);
+    });
+    it("push value", () => {
+      stack.push(5);
+      expect(stack.size()).toBe(1);
+    });
   });
-  //   it("push value", () => {
-  //     stack.push(5);
-  //     expect(stack.length).toBe(1);
-  //     expect(stack[0]).toBe(5);
-  //   });
-  //   it("pop value", () => {
-  //     let val = stack.pop();
-  //     expect(stack.size()).toBe(0);
-  //     expect(val).toBe(5);
-  //   });
+  describe("Pop", () => {
+    it("returns the last pushed and removes item", () => {
+      stack.push(5);
+      stack.push(9);
+      expect(stack.pop()).toBe(9);
+      expect(stack.size()).toBe(1);
+    });
+  });
+  describe("Peek", () => {
+    it("returns the last pushed but not remove item", () => {
+      stack.push(5);
+      stack.push(9);
+      expect(stack.peek()).toBe(9);
+      expect(stack.size()).toBe(2);
+    });
+  });
 });
